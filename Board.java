@@ -10,14 +10,10 @@ public class Board {
 	private int[][] board;
 
 	public Board(int rows, int columns) {
-		// System.out.println("Making new board");
 
-		if (rows > 0 && columns > 0) {
-			System.out.format("Creating a new %dx%d board%n", rows, columns);
-			this.board = new int[rows][columns];
-		}
+		if (rows > 0 && columns > 0) this.board = new int[rows][columns];
 		else {
-			System.out.println("Making default board 7x6 because you're stupid");
+			System.out.println("Making a 7x6 board.");
 			this.board = new int[6][7];
 		}
 	}
@@ -25,7 +21,6 @@ public class Board {
 	public Board addDisk(Scanner input, int player) {
 		// logic for placing a new disk on the board
 		// need to verify player is 1 or 2, column a valid column
-		// System.out.println("Running method addDisk");
 		int insertRow = -1;
 		int column = verifyInput(input);
 		
@@ -47,7 +42,6 @@ public class Board {
 
 	private int verifyInput(Scanner input) {
 		// logic for verifying user input is an int
-		// System.out.println("Running method verifyInput");
 		int column = 0;
 		
 		if (input.hasNextInt()) {
@@ -65,7 +59,6 @@ public class Board {
 
 	private int verifyColumn(int column) {
 		// logic for verifying column input
-		// System.out.println("Running method assertColumn");
 
 		if ((column >= 1) && (column <= width())) return column;
 		
@@ -81,7 +74,6 @@ public class Board {
 
 	public boolean fullBoard() {
 		// logic for determining if the board is full
-		// System.out.println("Running method fullBoard");
 		boolean boardFull = true;
 
 		for(int row = 0 ; row < height() ; row++) {
@@ -96,25 +88,21 @@ public class Board {
 
 	public int diskAt(int row, int column) {
 		// returns the value of the disk at a certain position or -1
-		// System.out.println("Running method diskAtPos");
 		return this.board[row][column];
 	}
 
 	public int width() {
 		// gets the width of the board
-		// System.out.println("Running method width");
 		return this.board[0].length;
 	}
 
 	public int height() {
 		// gets the height of the board
-		// System.out.println("Running method height");
 		return this.board.length;
 	}
 
 	public void boardprint() {
 		// logic for printing the board
-		// System.out.println("Running method boardprint");
 		for(int row = 0 ; row < height() ; row++) {
 			for(int column = 0 ; column < width() ; column++) {
 				
@@ -131,6 +119,7 @@ public class Board {
 			// adds 1 to the column numbers for easier user input
 			String number = "" + (column + 1);
 			
+			// standardizes the lenght of the string for prettier printing
 			if (number.length() == 1)
 				number = " " + number;
 
